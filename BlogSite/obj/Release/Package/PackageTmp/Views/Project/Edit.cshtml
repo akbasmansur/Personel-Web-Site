@@ -1,0 +1,42 @@
+﻿@model BlogSite.Models.Project
+
+@{
+    ViewBag.Title = "Proje Düzenle";
+}
+<div class="card-body">
+    <h5 class="card-title">Proje Düzenleme Sayfası</h5>
+    <form class="" method="post" action="/Project/Edit/@Model.ProjectId" enctype="multipart/form-data">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProjectId)
+        <div class="position-relative row form-group">
+            <label for="exampleName" class="col-sm-2 col-form-label">Proje Adı</label>
+            <div class="col-sm-10">
+                <input name="Name" value="@Model.Name" placeholder="Proje adını yazınız" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="exampleContent" class="col-sm-2 col-form-label">Proje İçeriği</label>
+            <div class="col-sm-10">
+                <textarea name="Content" class="ckeditor">@Model.Content</textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="examplePicURL" class="col-sm-2 col-form-label">Proje Resmi</label>
+            <div class="col-sm-10">
+                <input name="PicURL" value="@Model.PicURL" accept=".png,.jpg,.jpeg" type="file" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="ProjeURL" class="col-sm-2 col-form-label">Proje Adresi</label>
+            <div class="col-sm-10">
+                <input name="ProjeURL" value="@Model.ProjeURL" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-check">
+            <div class="col-sm-10 offset-sm-2">
+                <button class="btn btn-secondary">Kaydet</button>
+                <a href="/Project/Index" class="btn btn-light">Geri Dön</a>
+            </div>
+        </div>
+    </form>
+</div>

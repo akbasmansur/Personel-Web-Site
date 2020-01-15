@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BlogSite.Models.Quote>
+
+@{
+    ViewBag.Title = "Sözler Köşesi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<article class="blog-post px-3 py-5 p-md-5">
+    <div class="container">
+        <div class="blog-post-body">
+            <h5 class="my-3">Beğendiğim sözler</h5>
+            @foreach (var item in Model)
+            {
+                <blockquote class="blockquote m-lg-5 py-3 pl-4 px-lg-5">
+                    <p class="mb-2">@item.TheQuote</p>
+                    <footer class="blockquote-footer">@item.QuoteOwner</footer>
+                </blockquote>
+            }
+        </div>
+    </div>
+</article>

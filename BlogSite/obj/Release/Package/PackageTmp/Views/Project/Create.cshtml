@@ -1,0 +1,40 @@
+﻿@model BlogSite.Models.Project
+
+@{
+    ViewBag.Title = "Proje Oluştur";
+}
+<div class="card-body">
+    <h5 class="card-title">Proje Kısmı</h5>
+    <form class="" method="post" action="/Project/Create/" enctype="multipart/form-data">
+        <div class="position-relative row form-group">
+            <label for="exampleProje" class="col-sm-2 col-form-label">Proje Adı</label>
+            <div class="col-sm-10">
+                <input name="Name" placeholder="Başlığı yazınız." type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="exampleProje" class="col-sm-2 col-form-label">İçerik</label>
+            <div class="col-sm-10">
+                <textarea name="Content" class="ckeditor" placeholder="İçeriği yazınız"></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="exampleProje" class="col-sm-2 col-form-label">Proje Resmi</label>
+            <div class="col-sm-10">
+                <input name="myPicURL" accept="image/*" type="file" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="ProjeURL" class="col-sm-2 col-form-label">Proje Adresi</label>
+            <div class="col-sm-10">
+                <input name="ProjeURL" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-check">
+            <div class="col-sm-10 offset-sm-2">
+                <button class="btn btn-secondary">Kaydet</button>
+                <a href="/Project/Index" class="btn btn-light">Geri Dön</a>
+            </div>
+        </div>
+    </form>
+</div>

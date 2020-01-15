@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BlogSite.Models.Comment>
+
+@{
+    ViewBag.Title = "Blog Yorumları";
+}
+
+<div class="app-main__inner">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Blog Yorumları</h5>
+                    <table class="mb-0 table">
+                        <thead>
+                            <tr>
+                                <th>Yorum</th>
+                                <th>Blog Konusu</th>
+                                <th>Onay</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                //DateTime mydate = new DateTime(item.BlogDate);
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Content)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Blog.Title)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Confirmation)</td>
+                                    @*<td>@mydate.ToString("dd/MM/yyyy")</td>*@
+                                    <td>
+                                        <a href="/Comment/Edit/@item.CommentId" class="mb-2 mr-2 btn btn-info">Düzelt</a>
+                                        <a href="/Comment/Delete/@item.CommentId" class="mb-2 mr-2 btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

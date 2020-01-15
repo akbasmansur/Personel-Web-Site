@@ -1,0 +1,25 @@
+﻿@model BlogSite.Models.AboutMe
+
+@{
+    ViewBag.Title = "Hakkımda";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<article class="about-section py-5">
+    <div class="container">
+        <h2 class="title mb-3">Özgeçmiş</h2>
+
+        <p>
+            Net yazılım geliştiricisi olarak projeler yaptım. Asp.Net MVC platformunu
+            kullanarak websitesi yaptım. Ayrıca Xamarin Forms ile cross-platform mobil
+            uygulama geliştiriyorum. Google Play Store'a yüklediğim bir uygulamam
+            mevcuttur.
+        </p>
+        <figure><img class="img-fluid" src="~/Content/assets/images/bentatil2.jpg" alt="image"></figure>
+
+        <h2 class="mt-0">@Model.Title</h2>
+        <p>@Html.Raw(Model.Explanation)</p>
+
+        <figure><a href="/"><img class="img-fluid" src="~/Content/assets/images/promo-banner.jpg" alt="image"></a></figure>
+    </div>
+</article><!--//about-section-->

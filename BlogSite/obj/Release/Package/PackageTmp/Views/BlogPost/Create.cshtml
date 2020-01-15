@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Blog Konusu Oluştur";
+}
+<div class="card-body">
+    <h5 class="card-title">Blog</h5>
+    <form class="" method="post" action="/BlogPost/Create/" enctype="multipart/form-data">
+        <div class="position-relative row form-group">
+            <label for="Title" class="col-sm-2 col-form-label">Blog Konusu</label>
+            <div class="col-sm-10">
+                <input name="Title" placeholder="Konuyu yazınız." type="text" class="form-control" />
+            </div>
+        </div><!--Blog Konusu-->
+        <div class="position-relative row form-group">
+            <label for="Content" class="col-sm-2 col-form-label">Blog İçerik</label>
+            <div class="col-sm-10">
+                <textarea name="Content" class="ckeditor" placeholder="Blog içeriği yazınız"></textarea>
+            </div>
+        </div><!--Blog İçeriği-->
+        <div class="position-relative row form-group">
+            <label for="PicURL" class="col-sm-2 col-form-label">Blog Resmi</label>
+            <div class="col-sm-10">
+                <input name="PicURL" accept="image/*" type="file" class="form-control" />
+            </div>
+        </div><!--Blog Resmi-->
+        <div class="position-relative row form-group">
+            <label for="Category" class="col-sm-2 col-form-label">Blog Kategorisi</label>
+            <div class="col-sm-10">
+                @Html.DropDownList("CategoryId",null,new { @class = "form-control" })
+            </div>
+        </div><!--Blog Kategorisi-->
+        <div class="position-relative row form-check">
+            <div class="col-sm-10 offset-sm-2">
+                <button class="btn btn-secondary">Kaydet</button>
+                <a href="/BlogPost/Index" class="btn btn-light">Geri Dön</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,50 @@
+﻿@model IPagedList<BlogSite.Models.Blog>
+@using BlogSite.Helper
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Blog Konuları";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<section class="blog-list px-3 py-5 p-md-5">
+    <div class="row">
+        <div class="col-lg-9" style="text-align:justify">
+            <div class="container">
+                @foreach (var item in Model)
+                {
+                    <div class="item mb-5">
+                        <div class="media">
+                            <div class="media-body">
+                                <h3 class="title mb-1"><a href="/blog/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.BlogId">@item.Title</a></h3>
+                                <div class="meta mb-1"><span class="date">@item.BlogDate</span><span class="comment">@item.Category.CategoryName</span><span class="comment">@item.Comments.Count Yorum yapıldı</span></div>
+                                @if (item.Content.Length < 200)
+                                {
+                                    <div class="intro">@Html.Raw(item.Content.Substring(0, 100))...</div>
+                                }
+                                else
+                                {
+                                    <div class="intro">@Html.Raw(item.Content.Substring(0, 400))...</div>
+                                }
+                                <a class="more-link" href="/blog/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.BlogId">Devamını oku &rarr;</a>
+                            </div><!--//media-body-->
+                        </div><!--//media-->
+                    </div><!--//item-->
+                }
+                <div class="pagination" style="margin-top:-10px;padding-left:120px;">
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("BlogPost", new { page }), PagedListRenderOptions.Classic)
+                </div>
+                <link href="~/Content/PagedList.css" rel="stylesheet" />
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <aside class="right-sidebar">
+                <section class="cta-section theme-bg-light py-5">
+                    <div class="container text-left">
+                        <h5>Kategoriler</h5>
+                        @{Html.RenderAction("BlogKategoriPartial", "Default");}
+                    </div><!--//container-->
+                </section>
+            </aside>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+﻿@model BlogSite.Models.Category
+
+@{
+    ViewBag.Title = "Kategori Oluştur";
+}
+<div class="card-body">
+    <h5 class="card-title">Kategori</h5>
+    <form class="" method="post" action="/Category/Create/">
+        <div class="position-relative row form-group">
+            <label for="CategoryName" class="col-sm-2 col-form-label">Kategori Adı</label>
+            <div class="col-sm-10">
+                <input name="CategoryName" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="Description" class="col-sm-2 col-form-label">Açıklama</label>
+            <div class="col-sm-10">
+                <textarea name="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-check">
+            <div class="col-sm-10 offset-sm-2">
+                <button class="btn btn-secondary">Kaydet</button>
+                <a href="/Category/Index" class="btn btn-light">Geri Dön</a>
+            </div>
+        </div>
+    </form>
+</div>

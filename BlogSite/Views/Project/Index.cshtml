@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BlogSite.Models.Project>
+
+@{
+    ViewBag.Title = "Projeler Sayfası";
+}
+<div class="app-main__inner">
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="/Project/Create" class="mb-2 mr-2 btn btn-warning">Yeni Ekle</a>
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Projeler Sayfası</h5>
+                    <table class="mb-0 table">
+                        <thead>
+                            <tr>
+                                <th>Proje Adı</th>
+                                <th>Proje İçeriği</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Content)</td>
+                                    <td>
+                                        <a href="/Project/Edit/@item.ProjectId" class="mb-2 mr-2 btn btn-info">Düzelt</a>
+                                        <a href="/Project/Delete/@item.ProjectId" class="mb-2 mr-2 btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model BlogSite.Models.Blog
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<article class="blog-post px-3 py-5 p-md-5">
+    <div class="row">
+        <div class="container">
+            <div style="text-align:justify">
+                <header class="blog-post-header">
+                    <h2 class="title mb-2">@Model.Title</h2>
+                    <div class="meta mb-3">
+                        <span class="date">@Model.BlogDate</span>
+                        <span class="comment">@Model.Category.CategoryName</span>
+                        <span class="comment">@ViewBag.YorumSayisi Yorum yapıldı</span>
+                    </div>
+                </header>
+                <div class="blog-post-body">
+                    <p>@Html.Raw(Model.Content)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+

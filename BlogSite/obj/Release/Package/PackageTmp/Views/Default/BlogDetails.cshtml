@@ -1,0 +1,84 @@
+﻿@model BlogSite.Models.Blog
+@using System.Globalization
+
+@{
+    ViewBag.Title = "BlogDetails";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    int commentcount = Model.Comments.Where(x => x.Confirmation == true).Count();
+}
+<article class="blog-post px-3 py-5 p-md-5">
+    <div class="container">
+        <header class="blog-post-header">
+            <h2 class="title mb-2">@Model.Title</h2>
+            <div class="meta mb-3">
+                <span class="date">@Model.BlogDate</span>
+                <span class="comment">@Model.Category.CategoryName</span>
+                <span class="comment">@commentcount Yorum yapıldı</span>
+            </div>
+        </header>
+        <div class="blog-post-body">
+            <p>
+                @Html.Raw(Model.Content)
+            </p>
+        </div>
+    </div><!--//container-->
+</article>
+<div class="container">
+    <div class="card-body">
+        <h5 class="card-title">Yorum Yap</h5>
+        <form>
+            <div class="position-relative form-group">
+                <label for="Name" class="">İsim</label>
+                <input name="Name" id="adsoyad" type="text" class="form-control" required>
+            </div>
+            <div class="position-relative form-group">
+                <label for="E_mail" class="">E-posta</label>
+                <input name="E_mail" id="eposta" type="email" class="form-control" required>
+            </div>
+            <div class="position-relative form-group">
+                <label for="Content" class="">Yorum</label>
+                <textarea name="Content" id="icerik" class="form-control" required></textarea>
+            </div>
+            <button type="submit" id="gonder" class="mt-1 btn btn-primary">Gönder</button>
+        </form>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+        $("#gonder").click(function () {
+            var adisoyadiniz = $("#adsoyad").val();
+            var epostaniz = $("#eposta").val();
+            var iceriginiz = $("#icerik").val();
+            $.ajax({
+                url: '/Default/DoComment/',
+                data: { adsoyad: adisoyadiniz, eposta: epostaniz, icerik: iceriginiz, blogid:@Model.BlogId},
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Yorumunuz onaylandıktan sonra yayınlanacaktır.");
+                }
+                });
+            })
+        })
+        </script>
+        <div>
+            <hr />
+            <h5>Yapılan Yorumlar</h5>
+
+            @foreach (var item in Model.Comments.OrderByDescending(x => x.CommentId).Where(x => x.Confirmation == true))
+            {
+
+                <div class="position-relative form-group">
+                    <label style="font-size:large;font-weight:500;">@item.Name</label>
+                    <p>@item.Content</p>
+                </div>
+                
+                <hr />
+            }
+            @if (commentcount == 0)
+            {
+                <p>Henüz yorum yapılmamıştır</p>
+            }
+
+        </div>
+    </div>
+</div>

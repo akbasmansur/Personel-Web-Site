@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BlogSite.Models.Blog>
+@using BlogSite.Helper
+
+@{
+    ViewBag.Title = "Kategori Bazında Bloglar";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<section class="blog-list px-3 py-5 p-md-5">
+    <div class="row">
+        <div class="col-lg-9" style="text-align:justify">
+            <div class="container">
+                @foreach (var item in Model)
+                {
+                    <div class="item mb-5">
+                        <div class="media">
+                            @*<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="@Url.Content(item.PicURL)" alt="image">*@
+                            <div class="media-body">
+                                <h3 class="title mb-1"><a href="/Default/BlogDetails/@item.BlogId">@item.Title</a></h3>
+                                <div class="meta mb-1"><span class="date">@item.BlogDate</span><span class="comment">@item.Category.CategoryName</span><span class="comment">@item.Comments.Count Yorum yapıldı</span></div>
+                                @if (item.Content.Length < 200)
+                                {
+                                    <div class="intro">@Html.Raw(item.Content.Substring(0, 100))...</div>
+                                }
+                                else
+                                {
+                                    <div class="intro">@Html.Raw(item.Content.Substring(0, 400))...</div>
+                                }
+                                <a class="more-link" href="/blog/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.BlogId">Devamını oku &rarr;</a>
+                            </div><!--//media-body-->
+                        </div><!--//media-->
+                    </div><!--//item-->
+                }
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <aside class="right-sidebar">
+                <section class="cta-section theme-bg-light py-5">
+                    <div class="container text-left">
+                        <h5>Kategoriler</h5>
+                        @{Html.RenderAction("BlogKategoriPartial", "Default");}
+                    </div><!--//container-->
+                </section>
+            </aside>
+        </div>
+    </div>
+</section>
+

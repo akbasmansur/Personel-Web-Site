@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BlogSite.Models.Category>
+
+@{
+    ViewBag.Title = "Kategori Sayfası";
+}
+<div class="app-main__inner">
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="/Category/Create" class="mb-2 mr-2 btn btn-warning">Yeni Ekle</a>
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Kategoriler</h5>
+                    <table class="mb-0 table">
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Açıklama</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                    <td>
+                                        <a href="/Category/Edit/@item.CategoryId" class="mb-2 mr-2 btn btn-info">Düzelt</a>
+                                        <a href="/Category/Delete/@item.CategoryId" class="mb-2 mr-2 btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

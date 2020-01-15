@@ -1,0 +1,19 @@
+anlatilacak seyler
+Resim ekleme silme
+
+--->iyilestirmeler
+resim silme isleminde javascript kullanirsan iyi olur silmeden önce onay alma
+yorum tarihleri tutulmuyor
+user tarafindaki blogpost sayfasinda picurl gereksiz Blogtan komple kaldir o yaziyi
+Code için daha iyi bir alan kullanilabilir.
+
+--->yasadigim sorunlar
+Viewde post yaptigimda Controller kismindaki parametreye Datetime tipindeki veriyi geçiremedim.
+tema degistirme dügmesi çalismiyor
+user tarafinin footer kismi blogspot sayfasinda üste çikiyor.
+user tarafinin blogspot sayfasinda eger blogun ilk basinda resim varsa biçimsiz bir sekilde çikiyor.
+user blog yazisina yorum yapinca linkde görünen bilgiler güzel durmuyor
+Admin tarafinda yorum yapan kullanicilarin isimlerini çekerken Distinct yapamadim
+
+--->UNUTMA
+yorum sayilarini her yerde ayni yap

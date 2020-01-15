@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BlogSite.Models.Category>
+    @using BlogSite.Helper
+
+<form class="signup-form form-inline justify-content-lg-start pt-3">
+    <ul class="list-group" style="width:200px;">
+        @foreach (var item in Model)
+        {
+
+            <li class="list-group-item d-flex align-items-center">
+                <a href="/blog/@SeoHelper.ToSeoUrl(item.CategoryName).ToLower()/@item.CategoryId">@item.CategoryName</a>
+                @*@Html.ActionLink(item.CategoryName,"BlogPostByCategory",new { secim = item.CategoryId })*@
+                <span class="badge badge-primary ml-2">@item.Blogs.Count</span>
+            </li>
+
+        }
+    </ul>
+</form>

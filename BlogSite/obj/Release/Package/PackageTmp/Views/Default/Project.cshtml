@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BlogSite.Models.Project>
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<article class="blog-post px-3 py-5 p-md-5">
+    <div class="container">
+        <header class="blog-post-header">
+            <h2 class="title mb-2">Projelerim</h2>
+        </header>
+        <div class="blog-post-body">
+            <p>Şimdiye kadar içerisinde bulunduğum projelerim’inden bazılarını yada aklıma gelenleri bu sayfada güncel olarak paylaşmayı düşünüyorum. Paylaşmış olduğum projelerim ile ilgili her türlü düşüncenizi bana iletebilirseniz çok memnun olurum.</p>
+            @foreach (var item in Model)
+            {
+                <h3>@item.Name</h3>
+                if (item.PicURL != null)
+                {
+                    <figure class="blog-banner">
+                        <img class="img-fluid" src="@Url.Content(item.PicURL)" alt="@item.PicURL">
+                    </figure>
+                }
+                <p>@Html.Raw(item.Content)</p>
+                if (item.ProjeURL != null)
+                {
+                    <p>Proje Adresi:<a href="@item.ProjeURL" target="_blank"> @item.ProjeURL</a></p>
+                }
+                <hr />
+            }
+        </div>
+    </div>
+</article>

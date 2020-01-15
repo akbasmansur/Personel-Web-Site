@@ -1,0 +1,28 @@
+﻿@model BlogSite.Models.AboutMe
+
+@{
+    ViewBag.Title = "Hakkımda Oluştur";
+}
+<div class="card-body">
+    <h5 class="card-title">Hakkımda Kısmı</h5>
+    <form class="" method="post" action="/AboutMe/Create/">
+        <div class="position-relative row form-group">
+            <label for="exampleAbout" class="col-sm-2 col-form-label">Başlık</label>
+            <div class="col-sm-10">
+                <input name="Title" placeholder="Başlığı yazınız." type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="position-relative row form-group">
+            <label for="exampleAbout" class="col-sm-2 col-form-label">Açıklama</label>
+            <div class="col-sm-10">
+                <textarea name="Explanation" class="ckeditor" placeholder="İçeriği yazınız"></textarea>
+            </div>
+        </div>
+        <div class="position-relative row form-check">
+            <div class="col-sm-10 offset-sm-2">
+                <button class="btn btn-secondary">Kaydet</button>
+                <a href="/AboutMe/Index" class="btn btn-light">Geri Dön</a>
+            </div>
+        </div>
+    </form>
+</div>

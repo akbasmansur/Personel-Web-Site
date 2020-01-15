@@ -1,0 +1,37 @@
+﻿@model BlogSite.Models.AboutMe
+
+@{
+    ViewBag.Title = "Hakkımda Sayfası";
+}
+<div class="app-main__inner">
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="/AboutMe/Create" class="mb-2 mr-2 btn btn-warning">Yeni Ekle</a>
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title">Hakkımda Sayfası</h5>
+                    <table class="mb-0 table">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => Model.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => Model.Explanation)</td>
+                                <td>
+                                    <a href="/AboutMe/Edit/@Model.AboutMeId" class="mb-2 mr-2 btn btn-info">Düzelt</a>
+                                    <a href="/AboutMe/Delete/@Model.AboutMeId" class="mb-2 mr-2 btn btn-danger">Sil</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
